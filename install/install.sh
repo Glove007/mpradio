@@ -24,7 +24,7 @@ fi
 apt-get -y $INSTALL bluez pulseaudio-module-bluetooth python-gobject python-gobject-2 bluez-tools sox crudini libsox-fmt-mp3 python-dbus
 
 #Installing software needed to compile PiFmRDS..
-apt-get -y $INSTALL git libsndfile1-dev
+apt-get -y $INSTALL git libsndfile1-dev make gcc g++
 
 #Setting rules...
 BLACKLIST="/etc/modprobe.d/blacklist.conf"
