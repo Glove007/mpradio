@@ -80,35 +80,27 @@ fi
 ${CP} mpradio /home/pi/mpradio
 
 #Installing service units...
-cp -f ../install/mpradio.service /etc/systemd/system/mpradio.service
-if [[ $remove ]]; then
-	systemctl disable mpradio.service
-else
-	systemctl enable mpradio.service
-fi
+#cp -f ../install/mpradio.service /etc/systemd/system/mpradio.service
+#if [[ $remove ]]; then
+#	systemctl disable mpradio.service
+#else
+#	systemctl enable mpradio.service
+#fi
 
-#Installing PiFmRDS...
+#Installing fm_transmitter...
 
 if [[ $remove ]]; then
 	echo "not compiling before uninstall"
 else
 	cd /home/pi/
-	git clone https://github.com/ChristopheJacquet/PiFmRds.git
-	cd PiFmRds/src
+	git clone https://github.com/markondej/fm_transmitter.git
+	cd fm_transmitter
 	make clean
 	make
 fi
 
 #Final configuration and perms...
-FSTAB="/etc/fstab"
-fstabline=$(grep "pirateradio" $FSTAB -n|cut -d: -f1)
-if [[ $fstabline == "" ]]; then
-	echo "/dev/sda1    /pirateradio    vfat    defaults,ro,nofail 0   0" >> $FSTAB
-else
-	if [[ $remove ]]; then
-		sed -i.bak -e "${fstabline}d" $FSTAB
-	fi
-fi
+mkdir /pirateradio
 
 usermod -a -G lp pi
 
