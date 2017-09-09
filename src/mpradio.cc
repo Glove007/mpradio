@@ -1,7 +1,7 @@
 /**
  * \mainpage mpradio
  *
- * mpradio implements PiFmRDS, please check out their github and license.
+ * mpradio implements fm_transmitter, please check out their github and license.
  *
  * @author Moreno Razzoli
  */
