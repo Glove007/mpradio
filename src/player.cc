@@ -95,8 +95,7 @@ int play_bt(string device)
 	
 	string s0="/bin/su pi -c \"parec -d";
 	string s1="sox -t raw -v 1.3 -G -b 16 -e signed -c 2 -r 44100 - -t wav - | sudo /home/pi/fm_transmitter/fm_transmitter -f";
-	string s2="-"";
-	string cmdline = s0 + " " + device + " | " + s1 + " " + s.freq + " " + s2;
+	string cmdline = s0 + " " + device + " | " + s1 + " " + s.freq + " -";
 
 	system(cmdline.c_str());
 
